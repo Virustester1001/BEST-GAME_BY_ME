@@ -48,7 +48,10 @@ function spawnfood4 () {
         ....................
         ....................
         `, SpriteKind.livegiver2)
-    livegiver.setPosition(randint(65, 128), randint(10, 110))
+    livegiver22.setPosition(randint(65, 128), randint(10, 110))
+    for (let index = 0; index < 4; index++) {
+        livegiver22.x += -10
+    }
 }
 sprites.onOverlap(SpriteKind.botenemy, SpriteKind.pp3, function (sprite, otherSprite) {
     info.player3.changeLifeBy(-2)
@@ -78,6 +81,9 @@ function spawnfood2 () {
         ....................
         `, SpriteKind.livegiver2)
     livegiver.setPosition(randint(65, 128), randint(10, 110))
+    for (let index = 0; index < 4; index++) {
+        livegiver.x += -10
+    }
 }
 function food2 () {
     if (playerFood < 20) {
@@ -142,7 +148,7 @@ function spawnfood () {
         ......8768......
         `, SpriteKind.enemybotprincess)
     Queen.setPosition(randint(65, 128), randint(10, 110))
-    for (let index = 0; index < 6; index++) {
+    for (let index = 0; index < 4; index++) {
         Queen.x += -10
     }
 }
@@ -210,15 +216,15 @@ function spawnfood3 () {
         .....87678......
         ......8768......
         `, SpriteKind.enemybotprincess)
-    Queen.setPosition(randint(65, 128), randint(10, 110))
-    for (let index = 0; index < 6; index++) {
-        Queen.x += -10
+    Queen2.setPosition(randint(65, 128), randint(10, 110))
+    for (let index = 0; index < 4; index++) {
+        Queen2.x += -10
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.enemybotprincess, function (sprite, otherSprite) {
-    playerFood += randint(15, 25)
+    playerFood += randint(15, 20)
     info.player1.changeScoreBy(100)
-    sprites.destroy(Queen, effects.confetti, 500)
+    sprites.destroy(Queen)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Projectile, function (sprite, otherSprite) {
 	
@@ -1106,7 +1112,7 @@ info.player1.onLifeZero(function () {
     } else {
     	
     }
-    timer.after(8000, function () {
+    timer.after(5000, function () {
         player_1 = sprites.create(img`
             . . c c c c c . . . . . . . . . 
             . c c 5 5 5 5 c c c . . . . . . 
@@ -1125,20 +1131,48 @@ info.player1.onLifeZero(function () {
             . . . f f f f f f . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `, SpriteKind.Player)
-        player_1.setPosition(53, 32)
+        player_1.setPosition(randint(9, 50), randint(13, 100))
         player_1.setStayInScreen(true)
         player_1.setBounceOnWall(true)
         controller.player1.moveSprite(player_1)
         playerFood = 75
         for (let index = 0; index < 1; index++) {
-            info.player1.changeLifeBy(200)
+            if (Event == 1) {
+                info.player1.changeLifeBy(150)
+            } else if (Event == 2) {
+                info.player1.changeLifeBy(225)
+            } else if (Event == 3) {
+                info.player1.changeLifeBy(250)
+            } else if (Event == 4) {
+                info.player1.changeLifeBy(280)
+            } else if (Event == 4) {
+                info.player1.changeLifeBy(300)
+            } else if (Event == 4) {
+                info.player1.changeLifeBy(350)
+            } else {
+            	
+            }
         }
     })
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.livegiver2, function (sprite, otherSprite) {
-    info.player1.changeScoreBy(5)
-    info.player1.changeLifeBy(8)
-    sprites.destroy(Queen, effects.confetti, 500)
+    if (Event == 1) {
+        info.player1.changeLifeBy(1)
+    } else if (Event == 2) {
+        info.player1.changeLifeBy(7)
+    } else if (Event == 3) {
+        info.player1.changeLifeBy(10)
+    } else if (Event == 4) {
+        info.player1.changeLifeBy(12)
+    } else if (Event == 5) {
+        info.player1.changeLifeBy(16)
+    } else if (Event == 6) {
+        info.player1.changeLifeBy(20)
+    } else {
+    	
+    }
+    sprites.destroy(Queen)
+    info.player1.changeScoreBy(10)
 })
 function randomplayer () {
 	
